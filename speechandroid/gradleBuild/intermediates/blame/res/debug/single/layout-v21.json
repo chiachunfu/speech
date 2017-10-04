@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/chiachunfu/.android/build-cache/5a06c4cb61ce6c5ecdd6044869069f4085946fa6/output/res/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/chiachunfu/.android/build-cache/5a06c4cb61ce6c5ecdd6044869069f4085946fa6/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/chiachunfu/.android/build-cache/5a06c4cb61ce6c5ecdd6044869069f4085946fa6/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/gradleBuild/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/Users/chiachunfu/.android/build-cache/5a06c4cb61ce6c5ecdd6044869069f4085946fa6/output/res/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/chiachunfu/.android/build-cache/5a06c4cb61ce6c5ecdd6044869069f4085946fa6/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/gradleBuild/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/Users/chiachunfu/.android/build-cache/5a06c4cb61ce6c5ecdd6044869069f4085946fa6/output/res/layout-v21/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "/Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/gradleBuild/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/Users/chiachunfu/.android/build-cache/5a06c4cb61ce6c5ecdd6044869069f4085946fa6/output/res/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "/Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/gradleBuild/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/Users/chiachunfu/.android/build-cache/5a06c4cb61ce6c5ecdd6044869069f4085946fa6/output/res/layout-v21/notification_template_icon_group.xml"
+    }
+]

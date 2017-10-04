@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="libandroid_tensorflow_inference_java">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/libandroid_tensorflow_inference_java.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

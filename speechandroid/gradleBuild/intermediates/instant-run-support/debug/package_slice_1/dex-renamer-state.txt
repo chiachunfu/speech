@@ -1,0 +1,4 @@
+#Tue Oct 03 19:28:47 PDT 2017
+base.0=/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/transforms/dex/debug/folders/1000/5/slice_1
+renamed.0=classes.dex
+file.0=/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/transforms/dex/debug/folders/1000/5/slice_1/classes.dex

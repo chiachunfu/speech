@@ -1,0 +1,82 @@
+// This file provides basic support for building the TensorFlow demo
+// in Android Studio with Gradle.
+//
+// This file has been edited specifically for this demo.
+// Compared to the original TensorFlow demo, the 'bazel', 'cmake' and 'makefile' are disabled
+// in order to prevent overwriting the .so file I created.
+//
+project.buildDir = 'gradleBuild'
+getProject().setBuildDir('gradleBuild')
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.0'
+        classpath 'org.apache.httpcomponents:httpclient:4.5.2'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+// set to 'bazel', 'cmake', 'makefile', 'none'
+def nativeBuildSystem = 'bazel'
+
+// import DownloadModels task
+project.ext.ASSET_DIR = projectDir.toString() + '/assets'
+project.ext.TMP_DIR   = project.buildDir.toString() + '/downloads'
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "26.0.1"
+
+    lintOptions {
+        abortOnError false
+    }
+
+    sourceSets {
+        main {
+            if (nativeBuildSystem == 'bazel' || nativeBuildSystem == 'makefile') {
+                // TensorFlow Java API sources.
+                java {
+                    srcDir '../../java/src/main/java'
+                    exclude '**/examples/**'
+                }
+
+            }
+            // Android demo app sources.
+            java {
+                srcDir 'src'
+            }
+
+            manifest.srcFile 'AndroidManifest.xml'
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = [project.ext.ASSET_DIR]
+            jniLibs.srcDirs = ['libs']
+        }
+
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+
+}
+
+
+
+dependencies {
+    compile files('libs/libandroid_tensorflow_inference_java.jar')
+    compile 'com.android.support:support-annotations:+'
+    compile 'com.android.support:support-v4:25.1.1'
+    compile 'com.android.support:appcompat-v7:25.1.1'
+}

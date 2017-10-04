@@ -1,0 +1,14 @@
+{
+  "LSTM": {
+    "FEATURES": 39,
+    "HIDDEN": 512,
+    "BATCH_SIZE": 16,
+    "DEV_PATH": "/home/jovyan/work/tmp/short_dev/",
+    "TRAIN_PATH": "/home/jovyan/work/tmp/short_train/",
+    "LOG_PATH": "/home/jovyan/work/tmp/log/"
+  },
+  "INFERENCE": {
+    "PB_PATH": "/Path/and/file/name/of/your/pb/file",
+    "NPZ_PATH": "/Path/and/file/name/of/your/npz/file"
+  }
+}

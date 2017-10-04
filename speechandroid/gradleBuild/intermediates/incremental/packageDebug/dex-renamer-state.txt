@@ -1,0 +1,7 @@
+#Tue Oct 03 19:28:47 PDT 2017
+base.0=/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_a1a1cc2c390949cc97d25b525f2035fb277e03bb
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_08658d6e4c817e154b0e5efdfe0a142d74b5caa5/classes.dex
+base.1=/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_08658d6e4c817e154b0e5efdfe0a142d74b5caa5
+file.0=/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_a1a1cc2c390949cc97d25b525f2035fb277e03bb/classes.dex

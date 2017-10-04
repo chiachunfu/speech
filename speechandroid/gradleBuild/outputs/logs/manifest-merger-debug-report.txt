@@ -1,0 +1,71 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:18:1-44:12
+	package
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:19:5-34
+	xmlns:android
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:18:11-69
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:21:5-80
+	android:name
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:21:22-78
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:22:5-71
+	android:name
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:22:22-68
+uses-sdk
+ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:24:5-26:41
+MERGED from [com.android.support:appcompat-v7:25.1.1] /Users/chiachunfu/.android/build-cache/5a06c4cb61ce6c5ecdd6044869069f4085946fa6/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.1.1] /Users/chiachunfu/.android/build-cache/8a94810ca23bab9c3614a876872d6d09df4370d5/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.1.1] /Users/chiachunfu/.android/build-cache/8b1df8ac32ac19a8e413e12a1f8c7432f9fce282/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.1.1] /Users/chiachunfu/.android/build-cache/8fd5b4069c6cd9afae8f7053cb8b6dd523efe761/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.1.1] /Users/chiachunfu/.android/build-cache/35cfcd51e9dadb076e3fec3d403a2fa22865a136/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.1.1] /Users/chiachunfu/.android/build-cache/56dc2bfb39c75069d9293002e031695fe47ad8ac/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.1.1] /Users/chiachunfu/.android/build-cache/8be26a44d0569a32b2901ff4e1acc608bf2c3f10/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.1.1] /Users/chiachunfu/.android/build-cache/028e2cf1d5153701a9ab3e4d7a93c5ba93aff802/output/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-compat:25.1.1] /Users/chiachunfu/.android/build-cache/a6ccdf2c1f210d0cc0a0ab8738fb8f386360f138/output/AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.1.1] /Users/chiachunfu/.android/build-cache/5a06c4cb61ce6c5ecdd6044869069f4085946fa6/output/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:26:9-38
+	android:minSdkVersion
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:25:9-35
+application
+ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:28:5-42:19
+MERGED from [com.android.support:appcompat-v7:25.1.1] /Users/chiachunfu/.android/build-cache/5a06c4cb61ce6c5ecdd6044869069f4085946fa6/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:25.1.1] /Users/chiachunfu/.android/build-cache/8a94810ca23bab9c3614a876872d6d09df4370d5/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.1.1] /Users/chiachunfu/.android/build-cache/8b1df8ac32ac19a8e413e12a1f8c7432f9fce282/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.1.1] /Users/chiachunfu/.android/build-cache/8fd5b4069c6cd9afae8f7053cb8b6dd523efe761/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.1.1] /Users/chiachunfu/.android/build-cache/35cfcd51e9dadb076e3fec3d403a2fa22865a136/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.1.1] /Users/chiachunfu/.android/build-cache/56dc2bfb39c75069d9293002e031695fe47ad8ac/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.1.1] /Users/chiachunfu/.android/build-cache/8be26a44d0569a32b2901ff4e1acc608bf2c3f10/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.1.1] /Users/chiachunfu/.android/build-cache/028e2cf1d5153701a9ab3e4d7a93c5ba93aff802/output/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-compat:25.1.1] /Users/chiachunfu/.android/build-cache/a6ccdf2c1f210d0cc0a0ab8738fb8f386360f138/output/AndroidManifest.xml:25:5-20
+	android:label
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:30:9-41
+	android:debuggable
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:29:9-34
+	android:allowBackup
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:28:18-44
+	android:icon
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:31:9-45
+	android:theme
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:32:9-45
+activity#org.tensorflow.demo.SpeechActivity
+ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:34:9-41:20
+	android:screenOrientation
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:35:13-49
+	android:label
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:36:13-57
+	android:name
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:34:19-68
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:37:13-40:29
+action#android.intent.action.MAIN
+ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:38:17-69
+	android:name
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:38:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:39:17-77
+	android:name
+		ADDED from /Users/chiachunfu/Desktop/INSIGHT/github/speechandroid/AndroidManifest.xml:39:27-74

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_a1a1cc2c390949cc97d25b525f2035fb277e03bb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="049d1517b983fef0f7ddbd63c10c64bfeaa7edfd">
+        <dex dex="/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_08658d6e4c817e154b0e5efdfe0a142d74b5caa5/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/libs/libandroid_tensorflow_inference_java.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="54274525f1da90b7c6f81aca709b8c3d3621cdc2">
+        <dex dex="/Users/chiachunfu/Desktop/INSIGHT/Project/github/speechandroid/gradleBuild/intermediates/transforms/dex/debug/folders/1000/2/libandroid_tensorflow_inference_java_c2375f71e49bb7ab703761cb694bbbdc985388c8/classes.dex" />
+    </item>
+
+</items>
