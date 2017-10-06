@@ -12,12 +12,12 @@ In this repository, I'll step-by-step walk you through both processes: deploy a 
 ## Deploy a pretrained WaveNet model on Android
 
 ### ENVIRONMENT INFO
-MacOS Sierra 10.12.6
-Android 7.1.1
-Android NDK 15.2
-Android gradle plugin 2.3.0
-TensorFlow 1.3.0
-bazel 0.5.4-homebrew
+  * MacOS Sierra 10.12.6
+  * Android 7.1.1
+  * Android NDK 15.2
+  * Android gradle plugin 2.3.0
+  * TensorFlow 1.3.0
+  * bazel 0.5.4-homebrew
 
 ### TRY THE APP
 If you'd like to try out the app, everything you need are included in the 'speechandroid' folder. You can clone or download 
