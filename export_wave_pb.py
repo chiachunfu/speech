@@ -1,3 +1,10 @@
+"""
+Build the graph for inference, load the checkpoint and
+write it into a protocol buffers file.
+ 
+Author: JJ Fu
+"""
+
 import sugartensor as tf
 import numpy as np
 import librosa
