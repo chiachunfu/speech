@@ -50,6 +50,8 @@ You can check out the official quantization tutorial on Tensorflow website for o
 ### CONVERT RAW AUDIO INTO MEL-FREQUENCY CEPSTRAL COEFFICIENTS (MFCC)
 As the pretrained WaveNet is traied with [MFCC](http://recognize-speech.com/feature-extraction/mfcc) inputs, we need to add this feature extraction method into our pipeline. The source-build TensorFlow has an audio op that can perform this feature extraction. My initial thought was to wrap this operation with the pretrained wavenet and I did it by using a trick I found [here](https://stackoverflow.com/questions/43332342/is-it-possible-to-replace-placeholder-with-a-constant-in-an-existing-graph/43342922#43342922).  It turned out that there are some variations in how one can convert raw audio into MFCC. As shown below, the MFCC from Tensorflow audio op is different from the one given by librosa, a python library used by the pretrained WaveNet authors for converting training data into MFCC:
 
+![Image of MFCC](https://github.com/chiachunfu/speech/MFCC.png)
+
 Now wrapping the TensorFlow operation into the model is out of the picture. To make this work, I rewrote the librosa MFCC feature with Java so I could add the function between the raw audio input and the model in the Android app. The MFCC.java file can be found in /speechandroid/src/org/tensorflow/demo/mfcc/. 
 
 ### ANDRIOD APP
