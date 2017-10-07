@@ -20,9 +20,7 @@ In this repository, I'll step-by-step walk you through both processes: deploy a 
   * bazel 0.5.4-homebrew
 
 ### TRY THE APP
-If you'd like to try out the app, everything you need are included in the 'speechandroid' folder. You can clone or download 
-this repository and use Android Studio to open and run the project. Make sure that you have SDK and NDK installed (it can be 
-done through Android Studio). If you'd like to build the app from start to the end, first let's:
+If you'd like to try out the app (apk size: 8.3Mb), everything you need are included in the 'speechandroid' folder. You can clone or download this repository and use Android Studio to open and run the project. Make sure that you have SDK and NDK installed (it can be done through Android Studio). If you'd like to build the app from start to the end, first let's:
 
 ### GET THE MODEL
 Unlike image problems, it's not easy to find a pretrained DL model for speech-to-text that gives out checkpoints. Luckily, I found this WaveNet speech-to-text implementation [here](https://github.com/buriburisuri/speech-to-text-wavenet). To export the model for compression, I ran the docker image, loaded the checkpoint and wrote it into a protocol buffers file by running
@@ -141,7 +139,7 @@ The number of hidden units, batch size and the path to the data folders can be u
 ```python
     python lstm_ctc.py
 ```
-You can use Tensorboard to load the summary and check your performance, then export your selected model with:
+You can use Tensorboard to load the summary and check the performance, then export your selected model with:
 ```python
     python export_lstm_pb.py
 ```
