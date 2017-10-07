@@ -41,7 +41,7 @@ bazel-bin/tensorflow/tools/graph_transforms/transform_graph \
   --out_graph=/the/quantized/.pb/file \
   --transforms='quantize_weights'
 ```
-You can check out the official quantization tutorial on Tensorflow website for other options in 'transforms'. After quantization, the model was sized down by 75% from 15.5Mb to 4.0Mb because of the eight-bit conversion. Due to the time limit, I haven't calculated the letter error rate with a test set to quantify the accuracy drop before and after quantization. For detailed discussion on neural network quantization, [here](https://petewarden.com/2017/06/22/what-ive-learned-about-neural-network-quantization/) is a great post by Pete Warden. So now we have a compressed pretrained model, and let's see what else we need to deploy the model on Android:
+You can check out the official quantization tutorial on Tensorflow website for other options in 'transforms'. After quantization, the model was sized down by 75% from 15.5Mb to 4.0Mb because of the eight-bit conversion. Due to the time limit, I haven't calculated the letter error rate with a test set to quantify the accuracy drop before and after quantization. For detailed discussion on neural network quantization, [here](https://petewarden.com/2017/06/22/what-ive-learned-about-neural-network-quantization/) is a great post by Pete Warden. So now we have a compressed pretrained model, let's see what else we need to deploy the model on Android:
 
 ### TENSORFLOW OPS REGISTRATION 
 Here we need to bazel build tensorflow to create a .so file that can be called by JNI and includes all the operation libraries we need for the pretrained WaveNet model inference. First, let's edit the WORKSPACE file in the cloned TensorFlow repository by uncommenting and updating the paths to SDK and NDK. Second, we need to find out what ops were used in the pretrained model and generate a .so file with that piece of information. There are two ways to do this (only the second one worked for me):
@@ -71,7 +71,7 @@ Here we need to bazel build tensorflow to create a .so file that can be called b
      ```
      grep "op: " PATH/TO/mygraph.txt | sort | uniq | sed -E 's/^.+"(.+)".?$/\1/g'
      ```
-     in your terminal. Next, let's edit the BUILD file by adding the missing ops into the 'android_extended_ops_group1' or 'android_extended_ops_group2' in the Android libraries section. You can also make the .so file smaller by removing unneeded ops. Now, run:
+     in your terminal. Next, edit the BUILD file by adding the missing ops into the 'android_extended_ops_group1' or 'android_extended_ops_group2' in the Android libraries section. You can also make the .so file smaller by removing unneeded ops. Now, run:
      ```
      bazel build -c opt //tensorflow/contrib/android:libtensorflow_inference.so \
      --crosstool_top=//external:android/crosstool \
