@@ -48,39 +48,40 @@ Here we need to bazel build tensorflow to create a .so file that can be called b
   1. Use [selective registration](https://github.com/tensorflow/tensorflow/blob/master/tensorflow/python/tools/print_selective_registration_header.py)
   
      First run:
-``` shell  
+     ``` 
       bazel build tensorflow/python/tools:print_selective_registration_header && \
       bazel-bin/tensorflow/python/tools/print_selective_registration_header \
       --graphs=path/to/graph.pb > ops_to_register.h
-```
+      ```
      All the ops in the .pb file will be listed out in ops_to_register.h. 
      Next, move op_to_register.h to /tensorflow/tensorflow/core/framework/ and run:
-```  shell
+     
+     ```
       bazel build -c opt --copt="-DSELECTIVE_REGISTRATION" \
       --copt="-DSUPPORT_SELECTIVE_REGISTRATION" \
       //tensorflow/contrib/android:libtensorflow_inference.so \
       --host_crosstool_top=@bazel_tools//tools/cpp:toolchain \
       --crosstool_top=//external:android/crosstool --cpu=armeabi-v7a
-```
+      ```
      Unfortunately, while I didn't get any error message, the .so file still didn't include all the ops listed in the header file. 
     
   2. Modify BUILD in /tensorflow/tensorflow/core/kernels/
   
      If you didn't try out the first option and get the list of ops in the model, you can get that by tf.train.write_graph your graph and [do](https://github.com/tensorflow/tensorflow/issues/3549):
-```shell
+     ```
      grep "op: " PATH/TO/mygraph.txt | sort | uniq | sed -E 's/^.+"(.+)".?$/\1/g'
-```
+     ```
      in your terminal. Next, let's edit the BUILD file by adding the missing ops into the 'android_extended_ops_group1' or 'android_extended_ops_group2' in the Android libraries section. You can also make the .so file smaller by removing unneeded ops. Now, run:
-```shell
+     ```
      bazel build -c opt //tensorflow/contrib/android:libtensorflow_inference.so \
      --crosstool_top=//external:android/crosstool \
      --host_crosstool_top=@bazel_tools//tools/cpp:toolchain \
      --cpu=armeabi-v7a
-```
+     ```
      And you'll find the libtensorflow_inference.so file in:
-```shell
+     ```
      bazel-bin/tensorflow/contrib/android/libtensorflow_inference.so
-```
+     ```
   
 **NOTE** I ran into an error with the sparse_to_dense op when running on Android. If you'd like to repeat this work, add 'REGISTER_KERNELS_ALL(int64);' to sparse_to_dense_op.cc, line 153.
 
@@ -98,13 +99,13 @@ In addition to .so file, we also need a JAR file. You can simply include this in
       }
 ```
 or you can run:
-```
+   ```
       bazel build //tensorflow/contrib/android:android_tensorflow_inference_java
-```
+   ```
 and for both case, you'll find the file at:
-```
+   ```
       bazel-bin/tensorflow/contrib/android/libandroid_tensorflow_inference_java.jar
-```
+   ```
 Now, move both files to your android project. 
 
 ### CONVERT RAW AUDIO INTO MEL-FREQUENCY CEPSTRAL COEFFICIENTS (MFCC)
