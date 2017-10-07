@@ -41,7 +41,7 @@ bazel-bin/tensorflow/tools/graph_transforms/transform_graph \
   --out_graph=/the/quantized/.pb/file \
   --transforms='quantize_weights'
 ```
-You can check out the official quantization tutorial on Tensorflow website for other options in 'transforms'. After quantization, the model was sized down by 75% from 15.5Mb to 4.0Mb because of the eight-bit conversion. For detailed discussion on neural network quantization, [here](https://petewarden.com/2017/06/22/what-ive-learned-about-neural-network-quantization/) is a great post by Pete Warden. So now we have a compressed pretrained model, and let's see what else we need to deploy the model on Android:
+You can check out the official quantization tutorial on Tensorflow website for other options in 'transforms'. After quantization, the model was sized down by 75% from 15.5Mb to 4.0Mb because of the eight-bit conversion. Due to the time limit, I haven't calculated the letter error rate with a test set to quantify the accuracy drop before and after quantization. For detailed discussion on neural network quantization, [here](https://petewarden.com/2017/06/22/what-ive-learned-about-neural-network-quantization/) is a great post by Pete Warden. So now we have a compressed pretrained model, and let's see what else we need to deploy the model on Android:
 
 ### TENSORFLOW OPS REGISTRATION 
 Here we need to bazel build tensorflow to create a .so file that can be called by JNI and includes all the operation libraries we need for the pretrained WaveNet model inference. First, let's edit the WORKSPACE file in the cloned TensorFlow repository by uncommenting and updating the paths to SDK and NDK. Second, we need to find out what ops were used in the pretrained model and generate a .so file with that piece of information. There are two ways to do this (only the second one worked for me):
@@ -85,7 +85,7 @@ Here we need to bazel build tensorflow to create a .so file that can be called b
   
 **NOTE** I ran into an error with the sparse_to_dense op when running on Android. If you'd like to repeat this work, add 'REGISTER_KERNELS_ALL(int64);' to sparse_to_dense_op.cc, line 153.
 
-In addition to .so file, we also need a JAR file. You can simply include this in [the build.gradle file](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/android):
+In addition to .so file, we also need a JAR file. You can simply add this in [the build.gradle file](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/android):
 
 ```
       allprojects {
@@ -102,7 +102,7 @@ or you can run:
    ```
       bazel build //tensorflow/contrib/android:android_tensorflow_inference_java
    ```
-and for both case, you'll find the file at:
+and you'll find the file at:
    ```
       bazel-bin/tensorflow/contrib/android/libandroid_tensorflow_inference_java.jar
    ```
@@ -123,18 +123,33 @@ I modified the TF speech example in [Tensorflow Android Demo repository](https:/
 ## Build a small speech-to-text model with LSTM and CTC loss
 
 ### REQUIREMENTS
+tensorflow
+python
+numpy
+python-speech-features
 
+### REFERENCE
+The basic script and the file_logger.py and constants.py are borrowed from [here](https://github.com/philipperemy/tensorflow-ctc-speech-recognition) and [here](https://github.com/igormq/ctc_tensorflow_example).
 
 ### DATA PROCESSING
-
+I used the [VCTK corpus](http://homepages.inf.ed.ac.uk/jyamagis/page3/page58/page58.html). After downloading the data set, please delete p315 as the txt files are missing. See 'Data_Process.ipynb' for splitting data into train/dev/test sets, doing training data normilzation and pickling data into .npz files. I also got rid of files (after pickled) that are less than 10kb because some of the wav files less than that size are corrupted. In order to speed up the batch training, I only trained and validated on .npz files that are between 10kb and 70kb.
 
 ### TRAINING
+The number of hidden units, batch size and the path to the data folders can be updated in the conf.json file. The number of MFCC features should be adjusted depending on how you preprocess the wav files. I implemented the batch training and added gradient clipping to make the training run properly. You can start the training by:
 
+```python
+    python lstm_ctc.py
+```
+You can use Tensorboard to load the summary to check your performance and export your selected model with:
+```python
+    python export_lstm_pb.py
+```
+And inference with:
+```python
+    python lstm_pb_recognize.py
+```
 
-### RECOGNITION
-
-
-### RESULTS
+### WHAT'S NEXT?
 
 
 
