@@ -81,7 +81,7 @@ Here we need to bazel build tensorflow to create a .so file that can be called b
      bazel-bin/tensorflow/contrib/android/libtensorflow_inference.so
      ```
   
-**NOTE** I ran into an error with the sparse_to_dense op when running on Android. If you'd like to repeat this work, add 'REGISTER_KERNELS_ALL(int64);' to sparse_to_dense_op.cc, line 153.
+**NOTE** I ran into an error with the sparse_to_dense op when running on Android. If you'd like to repeat this work, add 'REGISTER_KERNELS_ALL(int64);' to sparse_to_dense_op.cc, line 153 and compile with the code above.
 
 In addition to .so file, we also need a JAR file. You can simply add this in [the build.gradle file](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/android):
 
