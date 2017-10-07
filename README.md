@@ -98,9 +98,9 @@ In addition to .so file, we also need a JAR file. You can simply include this in
       }
 ```
 or you can run:
-   ```
+```
       bazel build //tensorflow/contrib/android:android_tensorflow_inference_java
-    ```
+```
 and for both case, you'll find the file at:
 ```
       bazel-bin/tensorflow/contrib/android/libandroid_tensorflow_inference_java.jar
