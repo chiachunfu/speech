@@ -120,13 +120,14 @@ Now wrapping the TensorFlow operation into the model is out of the picture. To m
 ### ANDRIOD APP
 I modified the TF speech example in [Tensorflow Android Demo repository](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/android). The build.gradle file in the demo actually helps you build the .so and jar file. So if you'd like to start with demo example with your own model, you can simply get the list of your ops, modify the BUILD file and let the build.gradle file take care of the rest.  
 
+
 ## Build a small speech-to-text model with LSTM and CTC loss
 
 ### REQUIREMENTS
-tensorflow
-python
-numpy
-python-speech-features
+* tensorflow
+* python
+* numpy
+* python-speech-features
 
 ### REFERENCE
 The basic script and the file_logger.py and constants.py are borrowed from [here](https://github.com/philipperemy/tensorflow-ctc-speech-recognition) and [here](https://github.com/igormq/ctc_tensorflow_example).
@@ -140,11 +141,11 @@ The number of hidden units, batch size and the path to the data folders can be u
 ```python
     python lstm_ctc.py
 ```
-You can use Tensorboard to load the summary to check your performance and export your selected model with:
+You can use Tensorboard to load the summary and check your performance, then export your selected model with:
 ```python
     python export_lstm_pb.py
 ```
-And inference with:
+Next do inference with .npz file (or use librosa and python-speech-features to read and transform wav_files):
 ```python
     python lstm_pb_recognize.py
 ```
