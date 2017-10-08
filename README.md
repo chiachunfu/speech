@@ -20,7 +20,7 @@ In this repository, I'll step-by-step walk you through both processes: deploy a 
   * bazel 0.5.4-homebrew
 
 ### TRY THE APP
-If you'd like to try out the app (apk size: 8.3Mb), everything you need are included in the 'speechandroid' folder. You can clone or download this repository and use Android Studio to open and run the project. Make sure that you have SDK and NDK installed (it can be done through Android Studio). If you'd like to build the app from start to the end, first let's:
+If you'd like to try out the app (apk size: 8.3Mb, cpu type: ARM), everything you need are included in the 'speechandroid' folder. You can clone or download this repository and use Android Studio to open and run the project. Make sure that you have SDK and NDK installed (it can be done through Android Studio). If you'd like to build the app from start to the end, first let's:
 
 ### GET THE MODEL
 Unlike image problems, it's not easy to find a pretrained DL model for speech-to-text that gives out checkpoints. Luckily, I found this WaveNet speech-to-text implementation [here](https://github.com/buriburisuri/speech-to-text-wavenet). To export the model for compression, I ran the docker image, loaded the checkpoint and wrote it into a protocol buffers file by running
@@ -30,7 +30,7 @@ python export_wave_pb.py
 in the docker container. Next, we need to
 
 ### BAZEL BUILD TENSORFLOW FROM SOURCE AND QUANTIZE THE MODEL
-In order to [quantize the model with Tensorflow](https://www.tensorflow.org/performance/quantization), you need to have bazel installed and clone [Tensorflow repository](https://github.com/tensorflow/tensorflow). I recommend creating a new virtual environment and bazel [build tensorflow](https://www.tensorflow.org/install/install_sources) there. Once it's done, you can run:
+In order to [quantize the model with Tensorflow](https://www.tensorflow.org/performance/quantization), you need to have bazel installed and clone [Tensorflow repository](https://github.com/tensorflow/tensorflow). I recommend creating a new virtual environment to install and [build tensorflow](https://www.tensorflow.org/install/install_sources) there. Once it's done, you can run:
 ```shell
 bazel build tensorflow/tools/graph_transforms:transform_graph
 bazel-bin/tensorflow/tools/graph_transforms/transform_graph \
@@ -81,7 +81,7 @@ Here we need to bazel build tensorflow to create a .so file that can be called b
      bazel-bin/tensorflow/contrib/android/libtensorflow_inference.so
      ```
   
-**NOTE** I ran into an error with the sparse_to_dense op when running on Android. If you'd like to repeat this work, add 'REGISTER_KERNELS_ALL(int64);' to sparse_to_dense_op.cc, line 153 and compile with the code above.
+**NOTE** I ran into an error with the sparse_to_dense op when running on Android. If you'd like to repeat this work, add 'REGISTER_KERNELS_ALL(int64);' to sparse_to_dense_op.cc, line 153 and compile again.
 
 In addition to .so file, we also need a JAR file. You can simply add this in [the build.gradle file](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/android):
 
@@ -107,25 +107,25 @@ and you'll find the file at:
 Now, move both files to your android project. 
 
 ### CONVERT RAW AUDIO INTO MEL-FREQUENCY CEPSTRAL COEFFICIENTS (MFCC)
-As the pretrained WaveNet is traied with [MFCC](http://recognize-speech.com/feature-extraction/mfcc) inputs, we need to add this feature extraction method into our pipeline. The source-build TensorFlow has an audio op that can perform this feature extraction. My initial thought was to wrap this operation with the pretrained wavenet and I did it by using a trick I found [here](https://stackoverflow.com/questions/43332342/is-it-possible-to-replace-placeholder-with-a-constant-in-an-existing-graph/43342922#43342922).  It turned out that there are some variations in how one can convert raw audio into MFCC. As shown below, the MFCC from Tensorflow audio op is different from the one given by librosa, a python library used by the pretrained WaveNet authors for converting training data into MFCC:
+As the pretrained WaveNet is traied with [MFCC](http://recognize-speech.com/feature-extraction/mfcc) inputs, we need to add this feature extraction method into our pipeline. The source-build TensorFlow has an audio op that can perform this feature extraction. My initial thought was to wrap this operation with the pretrained WaeNet and I did it by using a trick I found [here](https://stackoverflow.com/questions/43332342/is-it-possible-to-replace-placeholder-with-a-constant-in-an-existing-graph/43342922#43342922).  It turned out that there are some variations in how one can convert raw audio into MFCC. As shown below, the MFCC from Tensorflow audio op is different from the one given by librosa, a python library used by the pretrained WaveNet authors for converting training data into MFCC:
 
 <p align="center">
   <img src="https://github.com/chiachunfu/speech/blob/master/MFCC.png">
 </p>
 
-Now wrapping the TensorFlow operation into the model is out of the picture. To make this work, I rewrote the librosa MFCC feature with Java so I could add the function between the raw audio input and the model in the Android app. The MFCC.java file can be found in /speechandroid/src/org/tensorflow/demo/mfcc/. 
+Now wrapping the TensorFlow operation into the model is out of the picture. To make this work, I rewrote the librosa MFCC feature into Java so I could add the function between the raw audio input and the model in the Android app. The MFCC.java file can be found in /speechandroid/src/org/tensorflow/demo/mfcc/. 
 
 ### ANDRIOD APP
-I modified the TF speech example in [Tensorflow Android Demo repository](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/android). The build.gradle file in the demo actually helps you build the .so and jar file. So if you'd like to start with demo example with your own model, you can simply get the list of your ops, modify the BUILD file and let the build.gradle file take care of the rest.  
+I modified the TF speech example in [Tensorflow Android Demo repository](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/examples/android). The build.gradle file in the demo actually helps you build the .so and jar file. So if you'd like to start with the demo examples with your own model, you can simply get the list of your ops, modify the BUILD file and let the build.gradle file take care of the rest.  
 
 
 ## Build a small speech-to-text model with LSTM and CTC loss
 
 ### REQUIREMENTS
-* tensorflow
-* python
-* numpy
-* python-speech-features
+  * tensorflow
+  * python
+  * numpy
+  * python-speech-features
 
 ### REFERENCE
 The basic script and the file_logger.py and constants.py are borrowed from [here](https://github.com/philipperemy/tensorflow-ctc-speech-recognition) and [here](https://github.com/igormq/ctc_tensorflow_example).
