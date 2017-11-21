@@ -107,7 +107,7 @@ with graph.as_default():
     # Gradient clipping
     tvars = tf.trainable_variables()
     grads = tf.gradients(cost, tvars)
-    grad_norm = tf.global_norm(tvars, name='tvars')
+    grad_norm = tf.global_norm(grads, name='grads')
     grads, _ = tf.clip_by_global_norm(grads, 2, use_norm=grad_norm)
     grads = list(zip(grads, tvars))
 
